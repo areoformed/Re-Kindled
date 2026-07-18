@@ -12,7 +12,7 @@ I plan to eventually re-write the font-rendering engine the old fashioned way fo
 
 But that's a project that will take many months, until then please enjoy what GPT calls a "a quiet, cable-local text display."
 
-Best,
+Best,<br/>
 [`areoform`]
 
 ## The following text was written by GPT-5.6 Sol xhigh
