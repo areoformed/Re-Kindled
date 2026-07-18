@@ -1,0 +1,319 @@
+{
+  "files": [
+    {
+      "bytes": 101,
+      "path": ".gitignore",
+      "sha256": "363b4b3d2b554e4b1030168f1d16f106fb0ba044b10742e80253475522876b6d"
+    },
+    {
+      "bytes": 1070,
+      "path": "LICENSE",
+      "sha256": "9150e65fe23118eace15cdd98103fe2b2e75ab703e15f516bf640c55b2ba543f"
+    },
+    {
+      "bytes": 1929,
+      "path": "README.md",
+      "sha256": "0c600644e9d4188db9b4989ee8abc9562b75cbeeea451a686d45a27cbb5aebba"
+    },
+    {
+      "bytes": 1668,
+      "path": "SECURITY.md",
+      "sha256": "3d9cc452032a07f786dc28407369a23038c5c4c9a504fb7e6fe5b7e390e9afdb"
+    },
+    {
+      "bytes": 2012,
+      "path": "THIRD_PARTY.md",
+      "sha256": "5c1cfc9390982db9d8361d2bfcac52abf4ab615334d4a5db2db8e8b909925aeb"
+    },
+    {
+      "bytes": 6,
+      "path": "VERSION",
+      "sha256": "e9dd8507f4bf0c6f42458e41aea833ad0bd3f6127272335eee9bf4d58541ed67"
+    },
+    {
+      "bytes": 3438,
+      "path": "agent-kit/AI-HANDOFF.md",
+      "sha256": "72dc090ee56aeee49fa5f12ae84946415ac53352c73331939180e8195b890161"
+    },
+    {
+      "bytes": 779,
+      "path": "agent-kit/README.md",
+      "sha256": "6c325da3c75eff98db78ec954224dab19273b15aeda32c7d5279b6b8968ab039"
+    },
+    {
+      "bytes": 3652,
+      "path": "agent-kit/skills/rekindled-display/SKILL.md",
+      "sha256": "251bd3b20da98816d63b4933555a1ddc35fe3f943086eca72e89b12327516897"
+    },
+    {
+      "bytes": 211,
+      "path": "agent-kit/skills/rekindled-display/agents/openai.yaml",
+      "sha256": "2ed1c5478b9d7065792d1251dc3e48ec70834220f53163a1c488235dbffdec73"
+    },
+    {
+      "bytes": 1968,
+      "path": "agent-kit/skills/rekindled-display/references/architecture.md",
+      "sha256": "fb7e06d9e0e0a78823ac9e049061da1316d7c00d7408bde99f8129047f81eb23"
+    },
+    {
+      "bytes": 1643,
+      "path": "agent-kit/skills/rekindled-display/references/mcp-protocol.md",
+      "sha256": "7fc3780771d27ad86f35c0b73237b305a080d1e808fbc4f19c29c1888166477b"
+    },
+    {
+      "bytes": 1940,
+      "path": "agent-kit/skills/rekindled-display/references/setup-and-recovery.md",
+      "sha256": "46d779b0bf59c9e53b620bc26341ed0b0f087a145892bef95d2bbf763ddfd8af"
+    },
+    {
+      "bytes": 1913,
+      "path": "agent-kit/skills/rekindled-display/references/typography.md",
+      "sha256": "170087e5a3214595ce8994124d0e68292891478fc6ba1736c9f4d304add4ecf9"
+    },
+    {
+      "bytes": 1996,
+      "path": "agent-kit/tools/audit-public-release.py",
+      "sha256": "e4021dc81ffb3c292a0cd91897f204f7f761a63b0cb89548a2a3371f0bd5eba8"
+    },
+    {
+      "bytes": 1829,
+      "path": "agent-kit/tools/make-release-manifest.py",
+      "sha256": "8080287823e7127de1b2914583f49836176e5eb32025cee9a49915cad996cf32"
+    },
+    {
+      "bytes": 3405,
+      "path": "code/ARCHITECTURE.md",
+      "sha256": "ac3ec8609c45493d1287eb77c5f52c801dc8e3e9e94b0a1992f3e80128c09c76"
+    },
+    {
+      "bytes": 985,
+      "path": "code/FOOTPRINT.md",
+      "sha256": "f72645c63021fe13bf82f543bd6f32bdcf3212eaa5ea679e3466a7ae083147cf"
+    },
+    {
+      "bytes": 3948,
+      "path": "code/README.md",
+      "sha256": "5c857ff25e228547b1ef16a4eca30e0c94ff9e2ff4e8fbbde2cb1b3041362658"
+    },
+    {
+      "bytes": 3198,
+      "path": "code/REPLICATION.md",
+      "sha256": "e14c366eaa207580a1942f50e219bb153ef2e118fb52730df54cf81f564238af"
+    },
+    {
+      "bytes": 4017,
+      "path": "code/TYPOGRAPHY.md",
+      "sha256": "61312c89b01a23c7265dfefab3f41b431a2cb555e5500f1df04166ab8a68b71d"
+    },
+    {
+      "bytes": 280,
+      "path": "code/device-config/ssh_config.example",
+      "sha256": "a5d1111c8fe9735d0e5fcc631dd139b9c2d70799458d8c536b2320d3b9cb5b7e"
+    },
+    {
+      "bytes": 171,
+      "path": "code/examples/an-old-page.txt",
+      "sha256": "dc5a94e26eecf493a83b50ff67efb91b80120824e203aa79a9cfcd7ba55631db"
+    },
+    {
+      "bytes": 1331,
+      "path": "code/kindle/launch-reader.sh",
+      "sha256": "bdfc74697360b9e8d1db59fc9912df542f76ef239f0d5ef019b8c8d5576d68ba"
+    },
+    {
+      "bytes": 926,
+      "path": "code/kindle/reader/document_test.go",
+      "sha256": "4c0deec4e6805fae0bf369ba2ed7c3eaa823e991d17ca90d3a00e50c63c592c1"
+    },
+    {
+      "bytes": 3518,
+      "path": "code/kindle/reader/gesture.go",
+      "sha256": "cb766247574f7b3206737c38bdf22162d0f1e6bf06f4765a86f59654e10095d6"
+    },
+    {
+      "bytes": 3095,
+      "path": "code/kindle/reader/gesture_test.go",
+      "sha256": "ddb214fb8c451262c4da8df1283a7e2c7c72a100db7c5853994c11d48c6bafb2"
+    },
+    {
+      "bytes": 33,
+      "path": "code/kindle/reader/go.mod",
+      "sha256": "9c0abed4ed3da79a6d912967dafa915a2c9d592820bd78931d826d8d6e1cb8a7"
+    },
+    {
+      "bytes": 1320,
+      "path": "code/kindle/reader/input_linux.go",
+      "sha256": "aad6559684a0584e7b177c5ec35ac9f43944c14d0948751a69d74625b4e10f4e"
+    },
+    {
+      "bytes": 426,
+      "path": "code/kindle/reader/input_unsupported.go",
+      "sha256": "0de2f83b73eb867f261a44e0c90ac757dedfc28fb422b4e3ef087e51e2026318"
+    },
+    {
+      "bytes": 5843,
+      "path": "code/kindle/reader/main.go",
+      "sha256": "9001521e235ae856cefaf811d8b65a348ecc8a0b06f0576e337a51bb11b98465"
+    },
+    {
+      "bytes": 1756,
+      "path": "code/kindle/reader/power.go",
+      "sha256": "ba607758fe196e8f8161336c1225de36991d7535fe33517b0462a2fa6d51eb26"
+    },
+    {
+      "bytes": 6311,
+      "path": "code/kindle/reader/preset.go",
+      "sha256": "24d363bd24f96fc2c3269937106622cf9cd2b39317d3875b8627046568ddfb0e"
+    },
+    {
+      "bytes": 3026,
+      "path": "code/kindle/reader/preset_test.go",
+      "sha256": "e197f2630813caeee7f315fe658bf84a14661e40d8f31b92dd965f360c873616"
+    },
+    {
+      "bytes": 1756,
+      "path": "code/kindle/reader/presets/mac/rekindled-mono-air.json",
+      "sha256": "21197c58abcef9155656735fa056f0486f93a2e68816756d1d8b8784f32d8282"
+    },
+    {
+      "bytes": 3269,
+      "path": "code/kindle/reader/render.go",
+      "sha256": "0d9358107ed995af8200bc4af5c612ffb6c53c6a0692a62a8a0838cbb595e6af"
+    },
+    {
+      "bytes": 664,
+      "path": "code/kindle/stop-reader.sh",
+      "sha256": "7d950e7f2cd62d8347a17827b5192d29639700b20174c33458551625fc4a3fd3"
+    },
+    {
+      "bytes": 8889,
+      "path": "code/mcp/server/catalog.go",
+      "sha256": "0c9c14b897ccbf17c984a02f29722fdb143a3fd2eee6a8e346d9fdddca07d32c"
+    },
+    {
+      "bytes": 12000,
+      "path": "code/mcp/server/device.go",
+      "sha256": "0be7a5a1d66479dea4ffbda802592632ba172b17727af3fd940a8467f4578901"
+    },
+    {
+      "bytes": 5781,
+      "path": "code/mcp/server/docs.go",
+      "sha256": "caf71e30207f7014aedbf02b26ef17a5f46f591f4405cbe47cd1f2126d5f43e2"
+    },
+    {
+      "bytes": 30,
+      "path": "code/mcp/server/go.mod",
+      "sha256": "a23c83005020ddf5bbb05d55e2c2551f192c7e4dc1795f1f1fe6f1bc9b2f9026"
+    },
+    {
+      "bytes": 2352,
+      "path": "code/mcp/server/main.go",
+      "sha256": "2a9578e1b16e3b5e60a02a890c3e4d6412901ed30ec7c147521ce2f13626d3e6"
+    },
+    {
+      "bytes": 9347,
+      "path": "code/mcp/server/protocol.go",
+      "sha256": "c28e497ed7b77f59515e625386cbd8a41e64036df0471c0604572e9fac123464"
+    },
+    {
+      "bytes": 3866,
+      "path": "code/mcp/server/server_test.go",
+      "sha256": "84cf8e4f9bbc294070024b713518382de71604025c61fd5d9c7bf046ac127d6a"
+    },
+    {
+      "bytes": 6180,
+      "path": "code/mcp/server/typelab.go",
+      "sha256": "0397d5d7c5181ce908f54aa86344c3b3f43466f75ae6e8c7720d8e5917df0007"
+    },
+    {
+      "bytes": 706,
+      "path": "code/mcp/server/typelab_test.go",
+      "sha256": "8fb7fb5065492800530086b9f0c41a2a1bf9f9a3a6422b582cda8f30337de4ed"
+    },
+    {
+      "bytes": 327,
+      "path": "code/mcp-config.example.json",
+      "sha256": "b030116117098a1de4b1f1b650a1a336dcb3d8123dcfa10ccd1f3fbbe4ed6430"
+    },
+    {
+      "bytes": 19,
+      "path": "code/requirements-fonts.txt",
+      "sha256": "d28792ae3162ce979d838464616efa2529972bba4fa0b78664d0e8bc86dbcbbd"
+    },
+    {
+      "bytes": 394,
+      "path": "code/scripts/build-mcp.sh",
+      "sha256": "01754a520ff896593bcb0b82c822d5e2c6d7f559e1f114b09c6cc5ff260e2fe9"
+    },
+    {
+      "bytes": 437,
+      "path": "code/scripts/build-reader.sh",
+      "sha256": "cdd288351c340c62dfbcd5bbf596244c751740d822be5c94b5fb0c392cf9abaf"
+    },
+    {
+      "bytes": 931,
+      "path": "code/scripts/check-device.sh",
+      "sha256": "1726a9829014fb687cf14945a15000a54088b43e098b93478738508225a2b60f"
+    },
+    {
+      "bytes": 2126,
+      "path": "code/scripts/deploy.sh",
+      "sha256": "5e585a479609d7f6c848ce75c94069e340091190168fc057f4d188dd50868ff9"
+    },
+    {
+      "bytes": 1573,
+      "path": "code/scripts/fetch-reference-font.sh",
+      "sha256": "200192f5debe63fc8dbd35cc5b245e4f1bb7cfb53996ef948a9e9d425528782d"
+    },
+    {
+      "bytes": 6223,
+      "path": "code/scripts/materialize-type-recipe.py",
+      "sha256": "a320129cc655f20bf19b92d978b18fb98dbab6a342b510c677609cbb8c8cc682"
+    },
+    {
+      "bytes": 885,
+      "path": "code/scripts/prepare-reference-type.sh",
+      "sha256": "c8c1497f7f9d6f405edf182529fd0990d97f5779c6400e9eab1ef91d08a5693b"
+    },
+    {
+      "bytes": 1020,
+      "path": "code/scripts/test.sh",
+      "sha256": "1d364fedfa2115c1a92e00a78b968f8651417905ed2f3eb120ee166e479fd466"
+    },
+    {
+      "bytes": 6366,
+      "path": "code/scripts/type-lab.py",
+      "sha256": "c34a88c90a7267a85cd4eca8e317d6f4713ee4ef56934929538cae8cc7bec021"
+    },
+    {
+      "bytes": 1891,
+      "path": "code/tests/test_type_lab.py",
+      "sha256": "41f878787b068b9b127db1f1b1b6fd9036bb8bb0c398c310a2398e1179501fce"
+    },
+    {
+      "bytes": 1738,
+      "path": "code/tests/test_typography_lab.py",
+      "sha256": "deadcd43663b6680a6e472937699d4da995ea3ea82d13c7bc3c289e480416bc2"
+    },
+    {
+      "bytes": 26732,
+      "path": "code/typography-lab/index.html",
+      "sha256": "783ff2f486bbabcb10b092d37f713dcf2836dc8bded7f4ce3f2b08892b1ee52c"
+    },
+    {
+      "bytes": 846,
+      "path": "code/typography-lab/reference-recipe.json",
+      "sha256": "7cc0234dfb00dcba74eb06d52ac96a915436e05e1ec76040f43b62c1c17452bf"
+    },
+    {
+      "bytes": 721,
+      "path": "code/welcome.txt",
+      "sha256": "16ae9a39bf8993520b72d223506769909c8d1ceb3ea08f8186255fb89ec3f98b"
+    }
+  ],
+  "name": "ReKindled",
+  "schema_version": 1,
+  "source_bytes": 176813,
+  "source_files": 62,
+  "version": "0.1.0"
+}

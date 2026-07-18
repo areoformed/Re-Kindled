@@ -1,0 +1,11 @@
+.DS_Store
+.local/
+code/build/
+code/device-config/ssh_config
+*.log
+*.pid
+*.ttf
+*.otf
+*.ttc
+*.pem
+id_*

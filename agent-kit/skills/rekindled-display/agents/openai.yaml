@@ -1,0 +1,4 @@
+interface:
+  display_name: "ReKindled Display"
+  short_description: "Build and operate a Kindle MCP display"
+  default_prompt: "Use $rekindled-display to set up, operate, or diagnose my ReKindled text display."

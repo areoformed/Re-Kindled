@@ -1,0 +1,10 @@
+@title: ReKindled / ready
+Good morning. ReKindled is connected: a small, cable-local display for deliberately paginated text.
+
+An agent can show a document, turn pages, select typography, inspect the reader, or use the Type Lab to calculate physical sizing and line-height recipes.
+
+Triple-tap the right half or swipe up to advance. Triple-tap the left half or swipe down to go back. Swipe right from the far-left edge to exit.
+---PAGE---
+Typography is physical here.
+
+Measure uppercase cap height as an angle at the eye. Measure line height as baseline-to-baseline pixels on the panel. Tune those independently, preflight every page with FBInk, and let the e-ink panel—not a browser preview—make the final decision.

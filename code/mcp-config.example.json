@@ -1,0 +1,12 @@
+{
+  "mcpServers": {
+    "rekindled": {
+      "command": "/ABSOLUTE/PATH/TO/Re-Kindled/code/build/macos/rekindled-mcp",
+      "args": [
+        "-root", "/ABSOLUTE/PATH/TO/Re-Kindled/code",
+        "-ssh-config", "/ABSOLUTE/PATH/TO/Re-Kindled/code/device-config/ssh_config",
+        "-host", "rekindled-pw5"
+      ]
+    }
+  }
+}

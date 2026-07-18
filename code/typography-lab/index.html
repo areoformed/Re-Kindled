@@ -1,0 +1,554 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light">
+  <title>ReKindled Type Lab</title>
+  <style>
+    :root {
+      --fog: #e7ebed;
+      --paper: #f7f7f2;
+      --ink: #172127;
+      --muted: #657077;
+      --rule: #aab3b8;
+      --blue: #184ea6;
+      --blue-soft: #dce7f8;
+      --amber: #ad5b00;
+      --panel-scale: .25;
+      --preview-size: 12.25px;
+      --preview-pitch: 14.25px;
+      --preview-margin: 30px;
+    }
+
+    * { box-sizing: border-box; }
+    html { background: var(--fog); color: var(--ink); }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-size: 15px;
+      line-height: 1.45;
+    }
+    button, input { font: inherit; }
+    button:focus-visible, input:focus-visible, summary:focus-visible {
+      outline: 3px solid var(--blue);
+      outline-offset: 3px;
+    }
+
+    .masthead {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 2rem;
+      align-items: end;
+      padding: 2rem clamp(1.1rem, 4vw, 4rem) 1.35rem;
+      border-bottom: 1px solid var(--ink);
+    }
+    .eyebrow, .section-label, .metric dt, .control-meta, .status-line, .button {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      text-transform: uppercase;
+      letter-spacing: .09em;
+      font-size: .68rem;
+    }
+    .eyebrow { color: var(--blue); margin: 0 0 .4rem; }
+    h1 {
+      margin: 0;
+      font: 500 clamp(2.25rem, 5vw, 5rem)/.96 Georgia, "Times New Roman", serif;
+      letter-spacing: -.045em;
+    }
+    .masthead p { max-width: 36rem; margin: .75rem 0 0; color: var(--muted); }
+    .reference-mark {
+      border-left: 3px solid var(--blue);
+      padding: .2rem 0 .2rem 1rem;
+      max-width: 18rem;
+      color: var(--muted);
+      font-size: .8rem;
+    }
+
+    main {
+      display: grid;
+      grid-template-columns: minmax(17rem, .8fr) minmax(23rem, 1.25fr) minmax(18rem, .95fr);
+      min-height: calc(100vh - 157px);
+    }
+    .zone { padding: 1.5rem clamp(1.1rem, 2.4vw, 2.25rem) 2rem; min-width: 0; }
+    .zone + .zone { border-left: 1px solid var(--rule); }
+    .section-label { margin: 0 0 1.4rem; color: var(--muted); }
+    .section-label strong { color: var(--ink); font-weight: 600; }
+
+    .control { margin: 0 0 1.65rem; }
+    .control-head { display: flex; align-items: baseline; justify-content: space-between; gap: 1rem; }
+    .control label { font-weight: 650; }
+    .dial-value {
+      color: var(--blue);
+      font: 600 1.15rem/1 ui-monospace, SFMono-Regular, Menlo, monospace;
+      white-space: nowrap;
+    }
+    .control-meta { color: var(--muted); margin-top: .42rem; letter-spacing: .04em; text-transform: none; }
+    input[type="range"] {
+      display: block;
+      width: 100%;
+      height: 2rem;
+      margin: .55rem 0 0;
+      accent-color: var(--blue);
+      cursor: ew-resize;
+    }
+    .ticks { display: flex; justify-content: space-between; color: var(--muted); font: .66rem ui-monospace, monospace; }
+
+    .button-row { display: flex; flex-wrap: wrap; gap: .55rem; margin-top: 1.25rem; }
+    .button {
+      border: 1px solid var(--ink);
+      background: transparent;
+      color: var(--ink);
+      padding: .68rem .78rem;
+      cursor: pointer;
+    }
+    .button:hover { background: var(--ink); color: var(--paper); }
+    .button.primary { background: var(--blue); border-color: var(--blue); color: white; }
+    .button.primary:hover { background: #0e397c; }
+    input[type="file"] { position: absolute; width: 1px; height: 1px; opacity: 0; }
+
+    details { border-top: 1px solid var(--rule); margin-top: 1.6rem; padding-top: 1rem; }
+    summary { cursor: pointer; font-weight: 650; }
+    .advanced-grid { display: grid; grid-template-columns: 1fr 1fr; gap: .8rem; margin-top: 1rem; }
+    .number-field label { display: block; color: var(--muted); font-size: .76rem; margin-bottom: .25rem; }
+    .number-field input {
+      width: 100%; border: 0; border-bottom: 1px solid var(--ink); background: transparent;
+      padding: .4rem .1rem; color: var(--ink); font-family: ui-monospace, monospace;
+    }
+
+    .preview-zone { display: flex; flex-direction: column; align-items: center; background: #d7dcde; }
+    .instrument-bar {
+      align-self: stretch; display: flex; justify-content: space-between; gap: 1rem;
+      margin-bottom: 1rem; color: var(--muted); font: .7rem ui-monospace, monospace;
+    }
+    .device {
+      width: min(100%, 390px);
+      aspect-ratio: 3 / 4;
+      background: #202629;
+      border: 1px solid #080b0d;
+      border-radius: 26px 26px 34px 34px;
+      padding: 25px 22px 37px;
+      box-shadow: 0 18px 36px rgba(24, 31, 35, .18);
+      position: relative;
+    }
+    .device::after {
+      content: ""; position: absolute; width: 27px; height: 3px; border-radius: 2px;
+      background: #080b0d; bottom: 16px; left: calc(50% - 13px);
+    }
+    .screen {
+      position: relative; width: 100%; height: 100%; overflow: hidden;
+      background: var(--paper); color: #202426;
+      box-shadow: inset 0 0 18px rgba(38, 48, 52, .12);
+    }
+    .screen-header, .screen-footer {
+      position: absolute; left: 15px; right: 15px; z-index: 2;
+      color: #555d61; font: 8px/1.2 ui-monospace, monospace; letter-spacing: .03em;
+    }
+    .screen-header { top: 14px; text-align: center; }
+    .screen-footer { bottom: 11px; display: flex; justify-content: space-between; }
+    #baselineGrid { position: absolute; inset: 0; width: 100%; height: 100%; opacity: .44; pointer-events: none; }
+    #baselineGrid line { stroke: #7fa2d8; stroke-width: .45; }
+    .specimen {
+      position: absolute; z-index: 1;
+      top: calc(170px * var(--panel-scale));
+      bottom: calc(165px * var(--panel-scale));
+      left: var(--preview-margin); right: var(--preview-margin);
+      overflow: hidden;
+      font-family: "ReKindled Preview", "Courier New", monospace;
+      font-size: var(--preview-size);
+      line-height: var(--preview-pitch);
+      white-space: pre-wrap;
+    }
+    .screen-rule { position: absolute; left: 15px; right: 15px; height: 1px; background: #c6c8c5; z-index: 2; }
+    .screen-rule.top { top: 31px; } .screen-rule.bottom { bottom: 27px; }
+    .preview-note {
+      max-width: 390px; margin: 1rem auto 0; color: var(--muted); font-size: .76rem;
+      text-align: center;
+    }
+
+    .metric-grid { display: grid; grid-template-columns: 1fr 1fr; border-top: 1px solid var(--ink); }
+    .metric { margin: 0; padding: .9rem 0; border-bottom: 1px solid var(--rule); }
+    .metric:nth-child(odd) { padding-right: 1rem; }
+    .metric:nth-child(even) { border-left: 1px solid var(--rule); padding-left: 1rem; }
+    .metric dt { color: var(--muted); margin-bottom: .25rem; letter-spacing: .04em; }
+    .metric dd { margin: 0; font: 600 1.25rem/1.2 ui-monospace, monospace; }
+    .metric dd small { font-size: .66rem; color: var(--muted); font-weight: 400; }
+    .threshold { margin: 1.25rem 0; padding: .85rem 0; border-top: 3px solid var(--blue); }
+    .threshold[data-state="below"] { border-color: var(--amber); }
+    .threshold strong { display: block; }
+    .threshold span { color: var(--muted); font-size: .78rem; }
+    .warning { color: var(--amber); min-height: 1.3rem; font-size: .78rem; }
+    .recipe-head { display: flex; justify-content: space-between; align-items: baseline; gap: 1rem; margin-top: 1.3rem; }
+    pre {
+      margin: .55rem 0 0; padding: 1rem; max-height: 18rem; overflow: auto;
+      background: #1d272d; color: #dce7eb; font: .71rem/1.55 ui-monospace, monospace;
+      tab-size: 2;
+    }
+    .status-line { color: var(--muted); min-height: 1rem; margin-top: .65rem; letter-spacing: .04em; text-transform: none; }
+
+    @media (max-width: 1050px) {
+      main { grid-template-columns: 1fr 1fr; }
+      .readout-zone { grid-column: 1 / -1; border-left: 0 !important; border-top: 1px solid var(--rule); }
+      .metric-grid { grid-template-columns: repeat(4, 1fr); }
+      .metric:nth-child(n) { border-left: 1px solid var(--rule); padding: .9rem; }
+      .metric:first-child { border-left: 0; }
+    }
+    @media (max-width: 700px) {
+      .masthead { grid-template-columns: 1fr; padding-top: 1.35rem; }
+      .reference-mark { max-width: none; }
+      main { display: block; }
+      .zone + .zone { border-left: 0; border-top: 1px solid var(--rule); }
+      .device { width: min(90vw, 390px); }
+      .metric-grid { grid-template-columns: 1fr 1fr; }
+      .metric:nth-child(n) { padding: .85rem; }
+      .metric:nth-child(odd) { border-left: 0; }
+    }
+    @media (prefers-reduced-motion: reduce) { * { scroll-behavior: auto !important; } }
+  </style>
+</head>
+<body>
+  <header class="masthead">
+    <div>
+      <p class="eyebrow">ReKindled / physical typography instrument</p>
+      <h1>Type Lab</h1>
+      <p>Set the body, baseline, distance, and measure. Export one deterministic recipe for an agent or the local font materializer.</p>
+    </div>
+    <div class="reference-mark">NASA’s current display standard sets 0.25° uppercase character height as a minimum and prefers 0.4° or greater. Treat that as a reference—not a universal optimum.</div>
+  </header>
+
+  <main>
+    <section class="zone control-zone" aria-labelledby="controls-heading">
+      <p class="section-label" id="controls-heading"><strong>01</strong> / physical dials</p>
+
+      <div class="control">
+        <div class="control-head"><label for="bodyPixels">Body size</label><output class="dial-value" id="bodyValue" for="bodyPixels">49 px</output></div>
+        <input data-testid="body-pixels" id="bodyPixels" type="range" min="24" max="90" step="1" value="49">
+        <div class="ticks"><span>24</span><span>FBInk pixels</span><span>90</span></div>
+        <div class="control-meta" id="bodyDelta">reference size</div>
+      </div>
+
+      <div class="control">
+        <div class="control-head"><label for="baselinePitch">Baseline pitch</label><output class="dial-value" id="pitchValue" for="baselinePitch">57 px</output></div>
+        <input data-testid="baseline-pitch" id="baselinePitch" type="range" min="28" max="120" step="1" value="57">
+        <div class="ticks"><span>28</span><span>absolute panel pixels</span><span>120</span></div>
+        <div class="control-meta" id="pitchDelta">reference pitch</div>
+      </div>
+
+      <div class="control">
+        <div class="control-head"><label for="distance">Viewing distance</label><output class="dial-value" id="distanceValue" for="distance">18 in</output></div>
+        <input data-testid="viewing-distance" id="distance" type="range" min="6" max="60" step="0.5" value="18">
+        <div class="ticks"><span>6</span><span>eye to panel</span><span>60</span></div>
+      </div>
+
+      <div class="control">
+        <div class="control-head"><label for="sideMargin">Side margins</label><output class="dial-value" id="marginValue" for="sideMargin">120 px</output></div>
+        <input data-testid="side-margin" id="sideMargin" type="range" min="50" max="260" step="5" value="120">
+        <div class="ticks"><span>50</span><span>each edge</span><span>260</span></div>
+      </div>
+
+      <div class="button-row">
+        <label class="button" for="presetFile">Load preset</label>
+        <input id="presetFile" type="file" accept="application/json,.json">
+        <label class="button" for="fontFile">Preview local font</label>
+        <input id="fontFile" type="file" accept=".ttf,.otf,font/ttf,font/otf">
+        <button class="button" id="resetButton" type="button">Reset reference</button>
+      </div>
+
+      <details>
+        <summary>Font and panel metrics</summary>
+        <div class="advanced-grid">
+          <div class="number-field"><label for="ascent">hhea ascent</label><input id="ascent" type="number" value="885" step="1"></div>
+          <div class="number-field"><label for="descent">hhea descent</label><input id="descent" type="number" value="-235" step="1"></div>
+          <div class="number-field"><label for="capHeight">Cap height units</label><input id="capHeight" type="number" value="700" step="1"></div>
+          <div class="number-field"><label for="ppi">Panel PPI</label><input id="ppi" type="number" value="300" min="1" step="1"></div>
+          <div class="number-field"><label for="panelHeight">Panel height px</label><input id="panelHeight" type="number" value="1648" min="1" step="1"></div>
+          <div class="number-field"><label for="topBottom">Top + bottom px</label><input id="topBottom" type="number" value="335" min="0" step="1"></div>
+        </div>
+      </details>
+    </section>
+
+    <section class="zone preview-zone" aria-labelledby="preview-heading">
+      <div class="instrument-bar"><span id="preview-heading">02 / panel specimen</span><span id="presetName">REFERENCE / MONO AIR</span></div>
+      <div class="device" aria-label="Geometric Kindle page preview">
+        <div class="screen">
+          <div class="screen-header">ReKindled / Type Lab</div>
+          <div class="screen-rule top"></div>
+          <svg id="baselineGrid" aria-hidden="true" preserveAspectRatio="none"></svg>
+          <div class="specimen" id="specimen">Reading speed is not a property of a typeface alone. It emerges from the face, the physical size of its capitals, the distance to the eye, the baseline rhythm, the width of the measure, and the quiet around the words.
+
+Change one dial at a time. Keep the old page if the new one truncates. Judge the e-ink panel—not this browser—as the final instrument.</div>
+          <div class="screen-rule bottom"></div>
+          <div class="screen-footer"><span>TRIPLE-TAP LEFT</span><span>1 / 2</span><span>TRIPLE-TAP RIGHT</span></div>
+        </div>
+      </div>
+      <p class="preview-note">Geometry preview only. Browser rasterization cannot prove FBInk hinting, contrast, refresh behavior, or physical legibility.</p>
+    </section>
+
+    <section class="zone readout-zone" aria-labelledby="readout-heading">
+      <p class="section-label" id="readout-heading"><strong>03</strong> / measured result</p>
+      <dl class="metric-grid">
+        <div class="metric"><dt>Cap angle</dt><dd id="angleMetric">0.325<small>°</small></dd></div>
+        <div class="metric"><dt>Line gap</dt><dd id="gapMetric">8<small> px</small></dd></div>
+        <div class="metric"><dt>hhea lineGap</dt><dd id="unitsMetric">161<small> u</small></dd></div>
+        <div class="metric"><dt>Lines / page</dt><dd id="linesMetric">23<small> est.</small></dd></div>
+      </dl>
+
+      <div class="threshold" id="threshold" data-state="pass">
+        <strong id="thresholdTitle">Above NASA minimum</strong>
+        <span id="thresholdCopy">0.075° above the 0.25° uppercase-character reference.</span>
+      </div>
+      <p class="warning" id="geometryWarning" role="status"></p>
+
+      <div class="recipe-head"><strong>Agent recipe</strong><span class="section-label" style="margin:0">JSON / v1</span></div>
+      <pre id="recipeOutput" data-testid="recipe-output" tabindex="0"></pre>
+      <div class="button-row">
+        <button class="button primary" data-testid="export-recipe" id="exportButton" type="button">Export recipe</button>
+      </div>
+      <div class="status-line" id="statusLine" role="status" aria-live="polite">Ready. No file or device has been changed.</div>
+    </section>
+  </main>
+
+  <script>
+    "use strict";
+
+    const reference = {
+      presetId: "rekindled-mono-air",
+      presetLabel: "REFERENCE / MONO AIR",
+      body: 49,
+      pitch: 57,
+      distance: 18,
+      margin: 120,
+      ascent: 885,
+      descent: -235,
+      capHeight: 700,
+      ppi: 300,
+      panelHeight: 1648,
+      topBottom: 335
+    };
+    let state = { ...reference };
+    let baseline = { ...reference };
+    let latestRecipe = {};
+
+    const ids = ["bodyPixels", "baselinePitch", "distance", "sideMargin", "ascent", "descent", "capHeight", "ppi", "panelHeight", "topBottom"];
+    const elements = Object.fromEntries(ids.map(id => [id, document.getElementById(id)]));
+
+    function number(id) { return Number(elements[id].value); }
+    function signed(value) { return `${value >= 0 ? "+" : ""}${value.toFixed(1)}%`; }
+    function unspacedHeight(body, ascent, descent) {
+      const vertical = ascent - descent;
+      return Math.ceil(body * ascent / vertical) + Math.abs(Math.ceil(body * descent / vertical));
+    }
+    function minimumLineGapUnits(gapPixels, body, ascent, descent) {
+      if (gapPixels <= 0) return 0;
+      return Math.floor((gapPixels - 1) * (ascent - descent) / body) + 1;
+    }
+    function actualGapPixels(units, body, ascent, descent) {
+      return Math.ceil(body * units / (ascent - descent));
+    }
+    function capAngle(body, capHeight, ascent, descent, ppi, distance) {
+      const capInches = (body * capHeight / (ascent - descent)) / ppi;
+      return 2 * Math.atan(capInches / (2 * distance)) * 180 / Math.PI;
+    }
+
+    function drawGrid(pitch, top, height) {
+      const svg = document.getElementById("baselineGrid");
+      const screenHeight = svg.clientHeight || 400;
+      const screenWidth = svg.clientWidth || 300;
+      svg.setAttribute("viewBox", `0 0 ${screenWidth} ${screenHeight}`);
+      svg.replaceChildren();
+      for (let y = top + pitch; y < height - (state.topBottom - 170) * .25; y += pitch) {
+        const line = document.createElementNS("http://www.w3.org/2000/svg", "line");
+        line.setAttribute("x1", "0"); line.setAttribute("x2", String(screenWidth));
+        line.setAttribute("y1", String(y)); line.setAttribute("y2", String(y));
+        svg.appendChild(line);
+      }
+    }
+
+    function update() {
+      state.body = number("bodyPixels");
+      state.pitch = number("baselinePitch");
+      state.distance = number("distance");
+      state.margin = number("sideMargin");
+      state.ascent = number("ascent");
+      state.descent = number("descent");
+      state.capHeight = number("capHeight");
+      state.ppi = number("ppi");
+      state.panelHeight = number("panelHeight");
+      state.topBottom = number("topBottom");
+
+      const valid = state.ascent > state.descent && state.capHeight > 0 && state.ppi > 0;
+      if (!valid) {
+        document.getElementById("geometryWarning").textContent = "Font metrics must have ascent > descent, with positive cap height and PPI.";
+        return;
+      }
+      const base = unspacedHeight(state.body, state.ascent, state.descent);
+      const requestedGap = Math.max(0, state.pitch - base);
+      const gapUnits = minimumLineGapUnits(requestedGap, state.body, state.ascent, state.descent);
+      const gap = actualGapPixels(gapUnits, state.body, state.ascent, state.descent);
+      const actualPitch = base + gap;
+      const angle = capAngle(state.body, state.capHeight, state.ascent, state.descent, state.ppi, state.distance);
+      const lines = Math.max(0, Math.floor((state.panelHeight - state.topBottom) / actualPitch));
+      const bodyDelta = 100 * (state.body / baseline.body - 1);
+      const pitchDelta = 100 * (actualPitch / baseline.pitch - 1);
+
+      document.getElementById("bodyValue").textContent = `${state.body} px`;
+      document.getElementById("pitchValue").textContent = `${state.pitch} px`;
+      document.getElementById("distanceValue").textContent = `${state.distance} in`;
+      document.getElementById("marginValue").textContent = `${state.margin} px`;
+      document.getElementById("bodyDelta").textContent = Math.abs(bodyDelta) < .01 ? "reference size" : `${signed(bodyDelta)} vs reference`;
+      document.getElementById("pitchDelta").textContent = Math.abs(pitchDelta) < .01 ? "reference pitch" : `${signed(pitchDelta)} actual vs reference`;
+      document.getElementById("angleMetric").innerHTML = `${angle.toFixed(3)}<small>°</small>`;
+      document.getElementById("gapMetric").innerHTML = `${gap}<small> px</small>`;
+      document.getElementById("unitsMetric").innerHTML = `${gapUnits}<small> u</small>`;
+      document.getElementById("linesMetric").innerHTML = `${lines}<small> est.</small>`;
+
+      const threshold = document.getElementById("threshold");
+      const pass = angle >= .25;
+      threshold.dataset.state = pass ? "pass" : "below";
+      document.getElementById("thresholdTitle").textContent = pass ? "Above NASA minimum" : "Below NASA minimum";
+      document.getElementById("thresholdCopy").textContent = `${Math.abs(angle - .25).toFixed(3)}° ${pass ? "above" : "below"} the 0.25° uppercase-character reference.`;
+      document.getElementById("geometryWarning").textContent = state.pitch < base
+        ? `Requested pitch is below the font’s ${base}px unspaced height; device result clamps to ${actualPitch}px.`
+        : actualPitch !== state.pitch
+          ? `OpenType rounding changes the requested ${state.pitch}px pitch to ${actualPitch}px on device.`
+          : "";
+
+      document.documentElement.style.setProperty("--preview-size", `${state.body * .25}px`);
+      document.documentElement.style.setProperty("--preview-pitch", `${actualPitch * .25}px`);
+      document.documentElement.style.setProperty("--preview-margin", `${state.margin * .25}px`);
+      drawGrid(actualPitch * .25, 170 * .25, state.panelHeight * .25);
+
+      latestRecipe = {
+        schema_version: 1,
+        source_preset: state.presetId,
+        candidate: {
+          body_fbink_pixels: state.body,
+          line_gap_pixels: gap,
+          baseline_pitch_pixels: actualPitch,
+          achieved_cap_height_degrees: Number(angle.toFixed(9)),
+          viewing_distance_inches: state.distance,
+          above_nasa_025_degree_minimum: pass,
+          body_side_margin_pixels: state.margin
+        },
+        actual_change_percent: {
+          body_size: Number(bodyDelta.toFixed(3)),
+          line_pitch: Number(pitchDelta.toFixed(3))
+        },
+        recipe: {
+          narrative_fbink_pixels: state.body,
+          hhea_line_gap_units: gapUnits,
+          body_side_margin_pixels: state.margin,
+          source_preset: state.presetId
+        }
+      };
+      document.getElementById("recipeOutput").textContent = JSON.stringify(latestRecipe, null, 2);
+    }
+
+    function setControls() {
+      elements.bodyPixels.value = state.body;
+      elements.baselinePitch.value = state.pitch;
+      elements.distance.value = state.distance;
+      elements.sideMargin.value = state.margin;
+      elements.ascent.value = state.ascent;
+      elements.descent.value = state.descent;
+      elements.capHeight.value = state.capHeight;
+      elements.ppi.value = state.ppi;
+      elements.panelHeight.value = state.panelHeight;
+      elements.topBottom.value = state.topBottom;
+      document.getElementById("presetName").textContent = state.presetLabel;
+      update();
+    }
+
+    ids.forEach(id => elements[id].addEventListener("input", update));
+    window.addEventListener("resize", update);
+
+    document.getElementById("resetButton").addEventListener("click", () => {
+      state = { ...reference };
+      baseline = { ...reference };
+      setControls();
+      document.getElementById("statusLine").textContent = "Reference geometry restored.";
+    });
+
+    document.getElementById("presetFile").addEventListener("change", async event => {
+      const file = event.target.files[0];
+      if (!file) return;
+      try {
+        const preset = JSON.parse(await file.text());
+        const face = preset.fonts.narrative;
+        const layout = preset.layout;
+        const vertical = face.ascent_units - face.descent_units;
+        const base = unspacedHeight(face.fbink_pixels, face.ascent_units, face.descent_units);
+        const gap = Math.ceil(face.fbink_pixels * (face.line_gap_units || 0) / vertical);
+        state = {
+          presetId: preset.id || file.name.replace(/\.json$/i, ""),
+          presetLabel: (preset.label || file.name).toUpperCase(),
+          body: face.fbink_pixels,
+          pitch: base + gap,
+          distance: preset.calibration.viewing_distance_inches,
+          margin: layout.body_left_pixels,
+          ascent: face.ascent_units,
+          descent: face.descent_units,
+          capHeight: face.cap_height_units,
+          ppi: preset.calibration.panel_pixels_per_inch,
+          panelHeight: preset.calibration.panel_height_pixels,
+          topBottom: layout.body_top_pixels + layout.body_bottom_pixels
+        };
+        baseline = { ...state };
+        setControls();
+        document.getElementById("statusLine").textContent = `Loaded preset ${file.name}; no device files changed.`;
+      } catch (error) {
+        document.getElementById("statusLine").textContent = `Could not load preset: ${error.message}`;
+      }
+    });
+
+    document.getElementById("fontFile").addEventListener("change", async event => {
+      const file = event.target.files[0];
+      if (!file) return;
+      try {
+        const face = new FontFace("ReKindled Preview", await file.arrayBuffer());
+        await face.load();
+        document.fonts.add(face);
+        document.getElementById("specimen").style.fontFamily = '"ReKindled Preview", monospace';
+        document.getElementById("statusLine").textContent = `Previewing ${file.name}. Enter its actual metrics above before exporting.`;
+      } catch (error) {
+        document.getElementById("statusLine").textContent = `Could not preview font: ${error.message}`;
+      }
+    });
+
+    document.getElementById("exportButton").addEventListener("click", () => {
+      const blob = new Blob([JSON.stringify(latestRecipe, null, 2) + "\n"], { type: "application/json" });
+      const link = document.createElement("a");
+      link.href = URL.createObjectURL(blob);
+      link.download = `${state.presetId || "rekindled"}-type-recipe.json`;
+      link.click();
+      URL.revokeObjectURL(link.href);
+      document.getElementById("statusLine").textContent = "Recipe exported. No font or device file was changed.";
+    });
+
+    function applyQueryDials() {
+      const query = new URLSearchParams(window.location.search);
+      const definitions = {
+        body: ["body", 24, 90],
+        pitch: ["pitch", 28, 120],
+        distance: ["distance", 6, 60],
+        margin: ["margin", 50, 260]
+      };
+      let applied = false;
+      for (const [field, [parameter, minimum, maximum]] of Object.entries(definitions)) {
+        if (!query.has(parameter)) continue;
+        const candidate = Number(query.get(parameter));
+        if (Number.isFinite(candidate) && candidate >= minimum && candidate <= maximum) {
+          state[field] = candidate;
+          applied = true;
+        }
+      }
+      if (applied) {
+        document.getElementById("statusLine").textContent = "Loaded reproducible dial values from the URL; no device file changed.";
+      }
+    }
+
+    applyQueryDials();
+    setControls();
+  </script>
+</body>
+</html>

@@ -1,0 +1,55 @@
+{
+  "schema_version": 1,
+  "id": "rekindled-mono-air-0.32deg-18in",
+  "label": "ReKindled Mono Air / 0.32 degree / +10% line pitch",
+  "header": "ReKindled / Mono Air / 0.32 / airy",
+  "calibration": {
+    "standard_reference": "NASA-STD-3001 Volume 2 Appendix F F.5.1.7",
+    "viewing_distance_inches": 18.0,
+    "panel_pixels_per_inch": 300.0,
+    "panel_width_pixels": 1236,
+    "panel_height_pixels": 1648,
+    "body_cap_height_degrees": 0.32,
+    "utility_cap_height_degrees": 0.25
+  },
+  "fonts": {
+    "narrative": {
+      "path": "/mnt/us/rekindled/fonts/ReKindledMonoAir-Regular.ttf",
+      "ascent_units": 885,
+      "descent_units": -235,
+      "line_gap_units": 168,
+      "cap_height_units": 700,
+      "fbink_pixels": 49
+    },
+    "utility": {
+      "path": "/mnt/us/rekindled/fonts/ReKindledMonoAir-Regular.ttf",
+      "ascent_units": 885,
+      "descent_units": -235,
+      "line_gap_units": 0,
+      "cap_height_units": 700,
+      "fbink_pixels": 38
+    }
+  },
+  "layout": {
+    "header_top_pixels": 55,
+    "header_bottom_pixels": 1510,
+    "header_side_pixels": 60,
+    "body_top_pixels": 170,
+    "body_bottom_pixels": 165,
+    "body_left_pixels": 120,
+    "body_right_pixels": 120,
+    "footer_top_pixels": 1525,
+    "footer_bottom_pixels": 45,
+    "footer_side_pixels": 60
+  },
+  "local_font_metadata": {
+    "category": "mono",
+    "license_policy": "open",
+    "body_fbink_pixels": 49,
+    "body_achieved_angle_degrees": 0.32494047120982994,
+    "body_line_gap_pixels": 8,
+    "body_line_spacing_multiplier": 1.163265306122449,
+    "utility_fbink_pixels": 38,
+    "note": "Reference geometry from the first physical trial. Materialize the derived face locally from a legally obtained source font; no font binary ships here."
+  }
+}

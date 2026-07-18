@@ -1,0 +1,10 @@
+Host rekindled-pw5
+    HostName 192.168.15.244
+    User root
+    IdentityFile ~/.ssh/rekindled
+    IdentitiesOnly yes
+    PreferredAuthentications publickey
+    PasswordAuthentication no
+    StrictHostKeyChecking yes
+    UserKnownHostsFile ~/.ssh/known_hosts
+    ConnectTimeout 8

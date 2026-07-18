@@ -1,0 +1,28 @@
+{
+  "schema_version": 1,
+  "source_preset": "rekindled-mono-air-0.32deg-18in",
+  "current": {
+    "body_fbink_pixels": 52,
+    "line_gap_pixels": 0,
+    "baseline_pitch_pixels": 52
+  },
+  "candidate": {
+    "body_fbink_pixels": 49,
+    "line_gap_pixels": 8,
+    "baseline_pitch_pixels": 57,
+    "achieved_cap_height_degrees": 0.324940471,
+    "viewing_distance_inches": 18,
+    "above_nasa_025_degree_minimum": true
+  },
+  "actual_change_percent": {
+    "body_size": -5.769,
+    "line_pitch": 9.615
+  },
+  "recipe": {
+    "narrative_fbink_pixels": 49,
+    "hhea_line_gap_units": 168,
+    "body_side_margin_pixels": 120,
+    "source_preset": "rekindled-mono-air-0.32deg-18in"
+  },
+  "note": "This preserves the exact first physical trial. The lab may emit 161 units as the smallest value that rounds to the same 8-pixel gap at 49 FBInk pixels."
+}
