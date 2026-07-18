@@ -1,18 +1,21 @@
 # ReKindled
 
-### Human Note
+[`  Human Note  `]
 
 Re-Kindled turns a jailbroken kindle into a monitor for AI agents to output to, with an emphasis on typography.
 
 The project code was written by GPT-5.6 Sol xhigh. It has not been verified by a human for correctness, efficiency, or speed; i.e. ymmv and use this at your personal risk.
 
-Please feel free to extend / improve on this project, as you wish. In the future, I intend to re-write the font-rendering engine manually for better rendering on e-ink displays.
+Please feel free to extend / improve on this project, as you wish.
+
+I plan to eventually re-write the font-rendering engine the old fashioned way for better rendering on e-ink displays.
 
 But that's a project that will take many months, until then please enjoy what GPT calls a "a quiet, cable-local text display."
 
+Best,
 [`areoform`]
 
-#### The following text was written by GPT-5.6 Sol xhigh
+## The following text was written by GPT-5.6 Sol xhigh
 
 ReKindled turns an already-jailbroken Kindle into a quiet, cable-local text display that agents can operate through a small MCP server.
 
